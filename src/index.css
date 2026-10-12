@@ -1,0 +1,124 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --edge-bg: #0B0A24;
+    --edge-surface: #11102D;
+    --edge-elevated: #171638;
+    --edge-violet: #8B5CF6;
+    --edge-blue: #4F7DFF;
+    --edge-lavender: #C4B5FD;
+    --edge-white: #F7F7FF;
+    --edge-muted: #AAA9C5;
+    --edge-border: rgba(196, 181, 253, 0.14);
+
+    --brand-primary: #8B5CF6;
+    --brand-hover: #7C3AED;
+    --brand-light: #171638;
+  }
+
+  body {
+    @apply bg-[#0B0A24] text-[#F7F7FF] antialiased font-sans selection:bg-[#8B5CF6]/30 selection:text-white;
+    background-color: #0B0A24;
+    color: #F7F7FF;
+    min-height: 100vh;
+  }
+}
+
+@layer utilities {
+  .bg-white\/8 {
+    background-color: rgba(255, 255, 255, 0.08);
+  }
+  .shadow-subtle {
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4), 0 1px 2px rgba(0, 0, 0, 0.3);
+  }
+  .shadow-premium {
+    box-shadow: 0 8px 32px -4px rgba(139, 92, 246, 0.18), 0 2px 8px -2px rgba(0, 0, 0, 0.4);
+  }
+}
+
+/* Custom scrollbars with Edge midnight styling */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0B0A24;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(196, 181, 253, 0.2);
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(139, 92, 246, 0.5);
+}
+
+/* Glassmorphism helpers for Edge UI */
+.glass-panel {
+  background: rgba(17, 16, 45, 0.85);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(196, 181, 253, 0.14);
+}
+
+.glass-dropdown {
+  background: rgba(23, 22, 56, 0.95);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(196, 181, 253, 0.2);
+  box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.6), 0 0 20px -2px rgba(139, 92, 246, 0.2);
+}
+
+/* Edge Luminous Brand Gradients & Accents */
+.edge-gradient-text {
+  background: linear-gradient(135deg, #FFFFFF 0%, #F7F7FF 40%, #C4B5FD 75%, #8B5CF6 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.edge-gradient-blue {
+  background: linear-gradient(135deg, #FFFFFF 0%, #C4B5FD 40%, #4F7DFF 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.edge-border-glow {
+  border: 1px solid rgba(196, 181, 253, 0.16);
+  transition: all 0.2s ease-in-out;
+}
+
+.edge-border-glow:hover {
+  border-color: rgba(139, 92, 246, 0.45);
+  box-shadow: 0 0 20px -5px rgba(139, 92, 246, 0.25);
+}
+
+.edge-horizon-curve {
+  position: relative;
+}
+
+.edge-horizon-curve::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 140%;
+  height: 100%;
+  background: radial-gradient(ellipse at 50% 0%, rgba(139, 92, 246, 0.3) 0%, rgba(79, 125, 255, 0.12) 40%, transparent 70%);
+  pointer-events: none;
+}
+
+/* Smooth transitions */
+.transition-smooth {
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Kanban column styling */
+.kanban-col {
+  min-height: calc(100vh - 280px);
+}
