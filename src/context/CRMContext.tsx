@@ -30,8 +30,7 @@ export type NavTab =
   | 'courses'
   | 'reports'
   | 'integrations'
-  | 'settings'
-  | 'website';
+  | 'settings';
 
 export interface Toast {
   id: string;
@@ -137,12 +136,7 @@ const CRMContext = createContext<CRMContextType | undefined>(undefined);
 
 export const CRMProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
   // Navigation & Search
-  const [currentTab, setCurrentTab] = useState<NavTab>(() => {
-    if (typeof window !== 'undefined' && window.location.hash === '#crm') {
-      return 'dashboard';
-    }
-    return 'website';
-  });
+  const [currentTab, setCurrentTab] = useState<NavTab>('dashboard');
   const [searchQuery, setSearchQuery] = useState('');
   const [toasts, setToasts] = useState<Toast[]>([]);
   const [realtimeConnected, setRealtimeConnected] = useState(false);

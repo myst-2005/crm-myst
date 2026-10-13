@@ -28,8 +28,9 @@ const PIPELINE_STAGES: PipelineStage[] = [
 ];
 
 const inputCls =
-  'w-full px-3 py-2 text-sm bg-slate-50 border border-slate-200 rounded-lg focus:bg-white focus:ring-2 focus:ring-brand-500/20 focus:border-brand-500 outline-none transition-all';
-const labelCls = 'block text-xs font-semibold text-slate-500 mb-1';
+  'w-full px-3 py-2.5 text-sm text-slate-900 placeholder:text-slate-400 bg-white border border-slate-300 rounded-lg shadow-sm hover:border-slate-400 focus:ring-4 focus:ring-brand-600/15 focus:border-brand-600 outline-none transition-all';
+const labelCls = 'block text-xs font-semibold text-slate-700 mb-1.5';
+const Req = () => <span className="text-rose-500">*</span>;
 
 export const CollegeModal: React.FC<CollegeModalProps> = ({ isOpen, onClose, collegeToEdit }) => {
   const { addCollege, updateCollege, teamMembers, leadSources, currentUser } = useCRM();
@@ -166,7 +167,7 @@ export const CollegeModal: React.FC<CollegeModalProps> = ({ isOpen, onClose, col
 
         {/* College Name */}
         <div>
-          <label className={labelCls}>College / Institution Name *</label>
+          <label className={labelCls}>College / Institution Name <Req /></label>
           <input
             type="text"
             required
@@ -181,7 +182,7 @@ export const CollegeModal: React.FC<CollegeModalProps> = ({ isOpen, onClose, col
         {/* District + Type */}
         <div className="grid grid-cols-2 gap-3">
           <div>
-            <label className={labelCls}>District / City *</label>
+            <label className={labelCls}>District / City <Req /></label>
             <input
               type="text"
               required
@@ -232,14 +233,14 @@ export const CollegeModal: React.FC<CollegeModalProps> = ({ isOpen, onClose, col
                 key={p}
                 type="button"
                 onClick={() => setPriority(p)}
-                className={`flex-1 py-1.5 text-xs font-semibold rounded-lg border transition-all ${
+                className={`flex-1 py-2 text-xs font-semibold rounded-lg border shadow-sm transition-all ${
                   priority === p
                     ? p === 'High'
                       ? 'bg-rose-500 border-rose-500 text-white'
                       : p === 'Medium'
                       ? 'bg-amber-500 border-amber-500 text-white'
                       : 'bg-slate-400 border-slate-400 text-white'
-                    : 'bg-slate-50 border-slate-200 text-slate-500 hover:border-slate-300'
+                    : 'bg-white border-slate-300 text-slate-600 hover:border-slate-400 hover:bg-slate-50'
                 }`}
               >
                 {p}
@@ -308,7 +309,7 @@ export const CollegeModal: React.FC<CollegeModalProps> = ({ isOpen, onClose, col
               </div>
               {leadSource === 'Referral' && (
                 <div>
-                  <label className={labelCls}>Referrer Name *</label>
+                  <label className={labelCls}>Referrer Name <Req /></label>
                   <input type="text" required value={referrerName} onChange={(e) => setReferrerName(e.target.value)}
                     placeholder="e.g. Dr. Karthik" className={inputCls} />
                 </div>
@@ -338,7 +339,7 @@ export const CollegeModal: React.FC<CollegeModalProps> = ({ isOpen, onClose, col
               <div>
                 <label className="block text-xs font-semibold text-rose-600 mb-1">Lost Reason *</label>
                 <input type="text" required value={lostReason} onChange={(e) => setLostReason(e.target.value)}
-                  placeholder="e.g. No response, Budget issues" className={`${inputCls} border-rose-200 bg-rose-50`} />
+                  placeholder="e.g. No response, Budget issues" className={`${inputCls} border-rose-300 bg-rose-50/50`} />
               </div>
             )}
 

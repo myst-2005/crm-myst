@@ -53,7 +53,7 @@ export const Modal: React.FC<ModalProps> = ({
 
       {/* Modal Dialog */}
       <div
-        className={`relative w-full ${maxWidthClasses} bg-white rounded-2xl shadow-2xl border border-slate-200/80 overflow-hidden transform transition-all z-10 my-8`}
+        className={`relative w-full ${maxWidthClasses} bg-white text-slate-900 [color-scheme:light] rounded-2xl shadow-2xl border border-slate-200/80 overflow-hidden transform transition-all z-10 my-8`}
         onClick={(e) => e.stopPropagation()}
       >
         {/* Header */}

@@ -12,7 +12,6 @@ import {
   BookOpen,
   BarChart3,
   Settings,
-  Globe,
   LogOut,
 } from 'lucide-react';
 import { supabase } from '../../lib/supabase';
@@ -22,8 +21,7 @@ interface SidebarProps {
   setMobileOpen: (open: boolean) => void;
 }
 
-const NAV_ITEMS: { id: NavTab; label: string; icon: React.ReactNode; isSpecial?: boolean }[] = [
-  { id: 'website',      label: 'Edge Website', icon: <Globe className="w-4 h-4" />, isSpecial: true },
+const NAV_ITEMS: { id: NavTab; label: string; icon: React.ReactNode }[] = [
   { id: 'dashboard',    label: 'Dashboard',    icon: <LayoutDashboard className="w-4 h-4" /> },
   { id: 'colleges',     label: 'Colleges',     icon: <GraduationCap className="w-4 h-4" /> },
   { id: 'contacts',     label: 'Contacts',     icon: <Users className="w-4 h-4" /> },
@@ -98,13 +96,11 @@ export const Sidebar: React.FC<SidebarProps> = ({ mobileOpen, setMobileOpen }) =
                 className={`w-full flex items-center justify-between px-3 py-2 rounded-xl text-xs font-medium transition-all ${
                   active
                     ? 'bg-gradient-to-r from-[#8B5CF6]/25 via-[#8B5CF6]/15 to-transparent text-[#F7F7FF] font-semibold border-l-2 border-[#8B5CF6] shadow-[inset_0_1px_1px_rgba(255,255,255,0.05)]'
-                    : item.isSpecial
-                    ? 'text-[#C4B5FD] bg-[#171638]/60 hover:bg-[#8B5CF6]/15 hover:text-[#F7F7FF] border border-[rgba(196,181,253,0.14)] mb-2'
                     : 'text-[#AAA9C5] hover:text-[#F7F7FF] hover:bg-[#171638]'
                 }`}
               >
                 <div className="flex items-center gap-2.5 min-w-0">
-                  <span className={active ? 'text-[#C4B5FD]' : item.isSpecial ? 'text-[#8B5CF6]' : 'text-[#AAA9C5]/80'}>
+                  <span className={active ? 'text-[#C4B5FD]' : 'text-[#AAA9C5]/80'}>
                     {item.icon}
                   </span>
                   <span className="truncate">{item.label}</span>
@@ -112,11 +108,6 @@ export const Sidebar: React.FC<SidebarProps> = ({ mobileOpen, setMobileOpen }) =
                 {item.id === 'tasks' && overdueTasks > 0 && (
                   <span className="text-[10px] font-bold bg-rose-500/80 text-white px-1.5 py-0.2 rounded-full shadow-[0_0_8px_rgba(244,63,94,0.5)]">
                     {overdueTasks}
-                  </span>
-                )}
-                {item.isSpecial && !active && (
-                  <span className="text-[9px] uppercase tracking-wider px-1 py-0.5 rounded bg-[#4F7DFF]/20 text-[#4F7DFF] font-bold">
-                    LIVE
                   </span>
                 )}
               </button>

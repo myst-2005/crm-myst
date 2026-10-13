@@ -17,7 +17,6 @@ import { CoursesView } from './components/courses/CoursesView';
 import { ReportsView } from './components/reports/ReportsView';
 import { IntegrationsView } from './components/integrations/IntegrationsView';
 import { SettingsView } from './components/settings/SettingsView';
-import { EdgeWebsiteView } from './components/website/EdgeWebsiteView';
 import { LoginPage } from './components/auth/LoginPage';
 import { ToastContainer } from './components/common/ToastContainer';
 import { College, Contact } from './types/crm';
@@ -72,16 +71,6 @@ const AppContent: React.FC<AppContentProps> = ({ isAuthenticated = true, onAuth 
     setContactCollegeId(contact.college_id);
     setContactModalOpen(true);
   };
-
-  // If viewing the public website view
-  if (currentTab === 'website') {
-    return (
-      <div className="min-h-screen bg-[#0B0A24] text-[#F7F7FF]">
-        <EdgeWebsiteView />
-        <ToastContainer />
-      </div>
-    );
-  }
 
   // If trying to access internal CRM while unauthenticated
   if (!isAuthenticated) {

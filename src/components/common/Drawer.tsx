@@ -51,7 +51,7 @@ export const Drawer: React.FC<DrawerProps> = ({
 
       <div className="fixed inset-y-0 right-0 pl-10 max-w-full flex">
         <div
-          className={`w-screen ${widthClasses} bg-white shadow-2xl border-l border-slate-200 flex flex-col transform transition ease-in-out duration-300`}
+          className={`w-screen ${widthClasses} bg-white text-slate-900 [color-scheme:light] shadow-2xl border-l border-slate-200 flex flex-col transform transition ease-in-out duration-300`}
           onClick={(e) => e.stopPropagation()}
         >
           {/* Header */}

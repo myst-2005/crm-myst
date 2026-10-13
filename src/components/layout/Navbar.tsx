@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useCRM } from '../../context/CRMContext';
-import { Menu, Search, Plus, Bell, AlertCircle, CheckCircle, Globe, Sparkles } from 'lucide-react';
+import { Menu, Search, Plus, Bell, AlertCircle, CheckCircle } from 'lucide-react';
 
 interface NavbarProps {
   onOpenMobileMenu: () => void;
@@ -8,7 +8,7 @@ interface NavbarProps {
 }
 
 export const Navbar: React.FC<NavbarProps> = ({ onOpenMobileMenu, onOpenNewCollegeModal }) => {
-  const { searchQuery, setSearchQuery, activities, currentTab, setCurrentTab } = useCRM();
+  const { searchQuery, setSearchQuery, activities, setCurrentTab } = useCRM();
   const [notifOpen, setNotifOpen] = useState(false);
 
   const dueTasks = activities.filter(
@@ -46,29 +46,6 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenMobileMenu, onOpenNewColle
       </div>
 
       <div className="ml-auto flex items-center gap-2.5">
-        {/* Toggle View: Public Website Preview vs CRM */}
-        <button
-          onClick={() => setCurrentTab(currentTab === 'website' ? 'dashboard' : 'website')}
-          className={`hidden sm:flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-semibold border transition-all ${
-            currentTab === 'website'
-              ? 'bg-[#8B5CF6]/20 text-[#C4B5FD] border-[#8B5CF6]/40 shadow-[0_0_15px_rgba(139,92,246,0.25)]'
-              : 'bg-[#171638] text-[#AAA9C5] border-[rgba(196,181,253,0.14)] hover:text-[#F7F7FF] hover:border-[#8B5CF6]/30'
-          }`}
-          title="Switch between Live Website & CRM"
-        >
-          {currentTab === 'website' ? (
-            <>
-              <Sparkles className="w-3.5 h-3.5 text-[#C4B5FD]" />
-              <span>Back to CRM</span>
-            </>
-          ) : (
-            <>
-              <Globe className="w-3.5 h-3.5 text-[#8B5CF6]" />
-              <span>View Public Website</span>
-            </>
-          )}
-        </button>
-
         {/* Notifications */}
         <div className="relative">
           <button
